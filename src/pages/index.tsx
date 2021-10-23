@@ -1,62 +1,80 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
+import styled from '@emotion/styled'
+import { keyframes } from '@emotion/react'
 
-import Counter from '../features/counter/Counter'
-import styles from '../styles/Home.module.css'
+import Counter from 'features/counter/Counter'
+import Link from 'app/components/Link'
+
+const floating = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`
+
+const Container = styled.div`
+  text-align: center;
+`
+
+const Logo = styled.img`
+  height: 40vmin;
+  pointer-events: none;
+
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${floating} infinite 3s ease-in-out;
+  }
+`
+
+const Header = styled.header`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: ${({ theme }) => theme.colors.secondary};
+`
 
 const IndexPage: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <Container>
       <Head>
         <title>Redux Toolkit</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <header className={styles.header}>
-        <img src="/logo.svg" className={styles.logo} alt="logo" />
+
+      <Header>
+        <Logo src="/logo.svg" alt="logo" />
         <Counter />
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <span>
           <span>Learn </span>
-          <a
-            className={styles.link}
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
             React
-          </a>
+          </Link>
           <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
             Redux
-          </a>
+          </Link>
           <span>, </span>
-          <a
-            className={styles.link}
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">
             Redux Toolkit
-          </a>
+          </Link>
           ,<span> and </span>
-          <a
-            className={styles.link}
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <Link href="https://react-redux.js.org/" target="_blank" rel="noopener noreferrer">
             React Redux
-          </a>
+          </Link>
         </span>
-      </header>
-    </div>
+      </Header>
+    </Container>
   )
 }
 

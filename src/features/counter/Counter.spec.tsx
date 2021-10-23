@@ -1,25 +1,28 @@
 import { render, screen } from '@testing-library/react'
 import user from '@testing-library/user-event'
 import { Provider } from 'react-redux'
+import { ThemeProvider } from '@emotion/react'
+
+import { makeStore } from 'app/store'
+import theme from 'app/theme'
+
+import Counter from './Counter'
 
 jest.mock('./counterAPI', () => ({
   fetchCount: (amount: number) =>
-    new Promise<{ data: number }>((resolve) =>
-      setTimeout(() => resolve({ data: amount }), 500)
-    ),
+    new Promise<{ data: number }>((resolve) => setTimeout(() => resolve({ data: amount }), 500)),
 }))
-
-import { makeStore } from '../../app/store'
-import Counter from './Counter'
 
 describe('<Counter />', () => {
   it('renders the component', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     expect(screen.getByText('0')).toBeInTheDocument()
@@ -29,9 +32,11 @@ describe('<Counter />', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     user.click(screen.getByRole('button', { name: /decrement value/i }))
@@ -43,9 +48,11 @@ describe('<Counter />', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     user.click(screen.getByRole('button', { name: /increment value/i }))
@@ -57,9 +64,11 @@ describe('<Counter />', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     user.type(screen.getByLabelText(/set increment amount/i), '{backspace}5')
@@ -72,9 +81,11 @@ describe('<Counter />', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     user.type(screen.getByLabelText(/set increment amount/i), '{backspace}3')
@@ -87,9 +98,11 @@ describe('<Counter />', () => {
     const store = makeStore()
 
     render(
-      <Provider store={store}>
-        <Counter />
-      </Provider>
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <Counter />
+        </Provider>
+      </ThemeProvider>,
     )
 
     user.click(screen.getByRole('button', { name: /add if odd/i }))

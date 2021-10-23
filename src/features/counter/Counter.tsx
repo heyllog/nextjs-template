@@ -1,69 +1,95 @@
-import { useState } from 'react'
+import { FC, useState } from 'react'
+import styled from '@emotion/styled'
 
-import { useAppSelector, useAppDispatch } from '../../app/hooks'
-import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  incrementIfOdd,
-  selectCount,
-} from './counterSlice'
-import styles from './Counter.module.css'
+import { useAppSelector, useAppDispatch } from 'app/store'
+import Button from 'app/components/Button'
 
-function Counter() {
-  const dispatch = useAppDispatch()
-  const count = useAppSelector(selectCount)
+import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counterSlice'
+
+const Row = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > button {
+    margin-left: 4px;
+    margin-right: 8px;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 16px;
+  }
+`
+
+const Value = styled.span`
+  font-size: 78px;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin-top: 2px;
+  font-family: 'Courier New', Courier, monospace;
+`
+
+const TextBox = styled.input`
+  font-size: 32px;
+  padding: 2px;
+  width: 64px;
+  text-align: center;
+  margin-right: 4px;
+`
+
+const AsyncButton = styled(Button)`
+  position: relative;
+
+  &::after {
+    content: '';
+    background-color: rgb(112 76 182 / 15%);
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    transition: width 1s linear, opacity 0.5s ease 1s;
+  }
+
+  &:active::after {
+    width: 0;
+    opacity: 100%;
+    transition: 0s;
+  }
+`
+
+const Counter: FC = () => {
   const [incrementAmount, setIncrementAmount] = useState('2')
+  const count = useAppSelector(selectCount)
+
+  const dispatch = useAppDispatch()
 
   const incrementValue = Number(incrementAmount) || 0
 
   return (
-    <div>
-      <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
+    <>
+      <Row>
+        <Button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
           -
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
+        </Button>
+        <Value>{count}</Value>
+        <Button aria-label="Increment value" onClick={() => dispatch(increment())}>
           +
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
+        </Button>
+      </Row>
+      <Row>
+        <TextBox
           aria-label="Set increment amount"
           value={incrementAmount}
           onChange={(e) => setIncrementAmount(e.target.value)}
         />
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementByAmount(incrementValue))}
-        >
-          Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(incrementValue))}
-        >
-          Add Async
-        </button>
-        <button
-          className={styles.button}
-          onClick={() => dispatch(incrementIfOdd(incrementValue))}
-        >
-          Add If Odd
-        </button>
-      </div>
-    </div>
+        <Button onClick={() => dispatch(incrementByAmount(incrementValue))}>Add Amount</Button>
+        <AsyncButton onClick={() => dispatch(incrementAsync(incrementValue))}>Add Async</AsyncButton>
+        <Button onClick={() => dispatch(incrementIfOdd(incrementValue))}>Add If Odd</Button>
+      </Row>
+    </>
   )
 }
 
