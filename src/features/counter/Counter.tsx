@@ -26,7 +26,6 @@ const Value = styled.span`
   padding-left: 16px;
   padding-right: 16px;
   margin-top: 2px;
-  font-family: 'Courier New', Courier, monospace;
 `
 
 const TextBox = styled.input`
