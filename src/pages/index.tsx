@@ -1,10 +1,10 @@
+import { keyframes } from '@emotion/react'
+import styled from '@emotion/styled'
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import styled from '@emotion/styled'
-import { keyframes } from '@emotion/react'
 
-import Counter from 'features/counter/Counter'
-import Link from 'app/components/Link'
+import Link from 'app/components/link'
+import Counter from 'features/counter/counter'
 
 const floating = keyframes`
   0% {
@@ -38,44 +38,42 @@ const Header = styled.header`
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: ${({ theme }) => theme.colors.secondary};
+  color: ${({ theme }): string => theme.colors.secondary};
 `
 
-const IndexPage: NextPage = () => {
-  return (
-    <Container>
-      <Head>
-        <title>Redux Toolkit</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+const IndexPage: NextPage = () => (
+  <Container>
+    <Head>
+      <title>Redux Toolkit</title>
+      <link rel='icon' href='/favicon.ico' />
+    </Head>
 
-      <Header>
-        <Logo src="/logo.svg" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <Link href="https://reactjs.org/" target="_blank" rel="noopener noreferrer">
-            React
-          </Link>
-          <span>, </span>
-          <Link href="https://redux.js.org/" target="_blank" rel="noopener noreferrer">
-            Redux
-          </Link>
-          <span>, </span>
-          <Link href="https://redux-toolkit.js.org/" target="_blank" rel="noopener noreferrer">
-            Redux Toolkit
-          </Link>
-          ,<span> and </span>
-          <Link href="https://react-redux.js.org/" target="_blank" rel="noopener noreferrer">
-            React Redux
-          </Link>
-        </span>
-      </Header>
-    </Container>
-  )
-}
+    <Header>
+      <Logo src='/logo.svg' alt='logo' />
+      <Counter />
+      <p>
+        Edit <code>src/App.tsx</code> and save to reload.
+      </p>
+      <span>
+        <span>Learn </span>
+        <Link href='https://reactjs.org/' target='_blank' rel='noopener noreferrer'>
+          React
+        </Link>
+        <span>, </span>
+        <Link href='https://redux.js.org/' target='_blank' rel='noopener noreferrer'>
+          Redux
+        </Link>
+        <span>, </span>
+        <Link href='https://redux-toolkit.js.org/' target='_blank' rel='noopener noreferrer'>
+          Redux Toolkit
+        </Link>
+        ,<span> and </span>
+        <Link href='https://react-redux.js.org/' target='_blank' rel='noopener noreferrer'>
+          React Redux
+        </Link>
+      </span>
+    </Header>
+  </Container>
+)
 
 export default IndexPage

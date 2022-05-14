@@ -19,5 +19,5 @@
 yarn create next-app --example https://github.com/heyllog/nextjs-template your-project
 cd your-project
 yarn run prepare
-cp .env.sample .env.local
+cp .env.sample .env
 ```

@@ -7,7 +7,7 @@ const Button = styled.button`
   padding-right: 12px;
   outline: none;
   border: 2px solid transparent;
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }): string => theme.colors.primary};
   padding-bottom: 4px;
   cursor: pointer;
   background: rgba(112, 76, 182, 10%) none;
@@ -16,7 +16,7 @@ const Button = styled.button`
 
   &:hover,
   &:focus {
-    border: 2px solid ${({ theme }) => theme.colors.primary};
+    border: 2px solid ${({ theme }): string => theme.colors.primary};
   }
 `
 

@@ -1,10 +1,11 @@
 import { FC, useState } from 'react'
+
 import styled from '@emotion/styled'
 
-import { useAppSelector, useAppDispatch } from 'app/store'
-import Button from 'app/components/Button'
+import Button from 'app/components/button'
+import { useAppDispatch, useAppSelector } from 'app/store'
 
-import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counterSlice'
+import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counter-slice'
 
 const Row = styled.div`
   display: flex;
@@ -70,23 +71,51 @@ const Counter: FC = () => {
   return (
     <>
       <Row>
-        <Button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
+        <Button
+          aria-label='Decrement value'
+          onClick={(): void => {
+            dispatch(decrement())
+          }}
+        >
           -
         </Button>
         <Value>{count}</Value>
-        <Button aria-label="Increment value" onClick={() => dispatch(increment())}>
+        <Button
+          aria-label='Increment value'
+          onClick={(): void => {
+            dispatch(increment())
+          }}
+        >
           +
         </Button>
       </Row>
       <Row>
         <TextBox
-          aria-label="Set increment amount"
+          aria-label='Set increment amount'
           value={incrementAmount}
-          onChange={(e) => setIncrementAmount(e.target.value)}
+          onChange={(e): void => setIncrementAmount(e.target.value)}
         />
-        <Button onClick={() => dispatch(incrementByAmount(incrementValue))}>Add Amount</Button>
-        <AsyncButton onClick={() => dispatch(incrementAsync(incrementValue))}>Add Async</AsyncButton>
-        <Button onClick={() => dispatch(incrementIfOdd(incrementValue))}>Add If Odd</Button>
+        <Button
+          onClick={(): void => {
+            dispatch(incrementByAmount(incrementValue))
+          }}
+        >
+          Add Amount
+        </Button>
+        <AsyncButton
+          onClick={(): void => {
+            dispatch(incrementAsync(incrementValue))
+          }}
+        >
+          Add Async
+        </AsyncButton>
+        <Button
+          onClick={(): void => {
+            dispatch(incrementIfOdd(incrementValue))
+          }}
+        >
+          Add If Odd
+        </Button>
       </Row>
     </>
   )

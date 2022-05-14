@@ -2,7 +2,7 @@ import type { InitialOptionsTsJest } from 'ts-jest/dist/types'
 
 const config: InitialOptionsTsJest = {
   preset: 'ts-jest',
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/setup-tests.ts'],
   transform: {
     '.+\\.(css|styl|less|sass|scss)$': 'jest-css-modules-transform',
   },

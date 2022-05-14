@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 
 const Link = styled.a`
-  color: ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }): string => theme.colors.primary};
 `
 
 export default Link
