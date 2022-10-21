@@ -17,6 +17,8 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
+    // redux-toolkit uses immer and params reassign quite often
+    'no-param-reassign': ['warn', { 'props': false }]
   },
   ignorePatterns: ['.eslintrc.js', '*.config.js'],
 }

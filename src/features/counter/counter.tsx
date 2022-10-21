@@ -104,7 +104,7 @@ const Counter: FC = () => {
         </Button>
         <AsyncButton
           onClick={(): void => {
-            dispatch(incrementAsync(incrementValue))
+            void dispatch(incrementAsync(incrementValue))
           }}
         >
           Add Async

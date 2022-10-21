@@ -555,10 +555,10 @@
   dependencies:
     "@jridgewell/trace-mapping" "0.3.9"
 
-"@eclab/eslint-config@1.0.1":
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/@eclab/eslint-config/-/eslint-config-1.0.1.tgz#6992be0a6a8cc87042f648b9b51bb21e072ff7ad"
-  integrity sha512-+Ttuwft7JSpXaaiIHkFG8XgKIoUt1ZB4RPIGwAV6rwY8TuwNKCDSDQbOYNVnx+7o/7NXleE+KpiSjBvVeV1yzg==
+"@eclab/eslint-config@1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@eclab/eslint-config/-/eslint-config-1.1.0.tgz#f25ac1bc0fa6cd4d9a12fc103d75bfe3263a523a"
+  integrity sha512-rvKjU0F+iEogCMBMKXZaE9sxtZeRXGByAR3CuM4zjM7vrAxiSneTH5pZ/w9zsajeeCbGg9L4KdG3tM1w3NIcmw==
 
 "@emotion/babel-plugin@^11.10.0", "@emotion/babel-plugin@^11.10.2":
   version "11.10.2"

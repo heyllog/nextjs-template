@@ -1,4 +1,3 @@
-// eslint-disable-next-line filename-rules/match
 import { FC } from 'react'
 
 import { css, ThemeProvider, Global } from '@emotion/react'
