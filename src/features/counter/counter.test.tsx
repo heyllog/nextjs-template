@@ -1,6 +1,6 @@
 import { ThemeProvider } from '@emotion/react'
 import { fireEvent, render, screen } from '@testing-library/react'
-import user from '@testing-library/user-event'
+import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 
 import { makeStore } from 'app/store'
@@ -62,7 +62,8 @@ describe('<Counter />', () => {
     expect(screen.getByText('1')).toBeInTheDocument()
   })
 
-  it('increments by amount', () => {
+  it('increments by amount', async () => {
+    const user = userEvent.setup()
     const store = makeStore()
 
     render(
@@ -73,13 +74,14 @@ describe('<Counter />', () => {
       </ThemeProvider>,
     )
 
-    user.type(screen.getByLabelText(/set increment amount/i), '{backspace}5')
+    await user.type(screen.getByLabelText(/set increment amount/i), '{backspace}5')
     fireEvent.click(screen.getByRole('button', { name: /add amount/i }))
 
     expect(screen.getByText('5')).toBeInTheDocument()
   })
 
   it('increments async', async () => {
+    const user = userEvent.setup()
     const store = makeStore()
 
     render(
@@ -90,13 +92,14 @@ describe('<Counter />', () => {
       </ThemeProvider>,
     )
 
-    user.type(screen.getByLabelText(/set increment amount/i), '{backspace}3')
+    await user.type(screen.getByLabelText(/set increment amount/i), '{backspace}3')
     fireEvent.click(screen.getByRole('button', { name: /add async/i }))
 
     await expect(screen.findByText('3')).resolves.toBeInTheDocument()
   })
 
   it('increments if amount is odd', async () => {
+    const user = userEvent.setup()
     const store = makeStore()
 
     render(
@@ -112,7 +115,7 @@ describe('<Counter />', () => {
     expect(screen.getByText('0')).toBeInTheDocument()
 
     fireEvent.click(screen.getByRole('button', { name: /increment value/i }))
-    user.type(screen.getByLabelText(/set increment amount/i), '{backspace}8')
+    await user.type(screen.getByLabelText(/set increment amount/i), '{backspace}8')
     fireEvent.click(screen.getByRole('button', { name: /add if odd/i }))
 
     await expect(screen.findByText('9')).resolves.toBeInTheDocument()

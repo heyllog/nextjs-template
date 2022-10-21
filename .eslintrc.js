@@ -12,7 +12,6 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
-    "next/core-web-vitals",
     '@eclab/eslint-config/react',
     'prettier',
   ],
