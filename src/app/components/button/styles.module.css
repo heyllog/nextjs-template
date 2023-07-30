@@ -1,23 +1,19 @@
-import styled from '@emotion/styled'
-
-const Button = styled.button`
+.button {
   appearance: none;
   font-size: 32px;
   padding-left: 12px;
   padding-right: 12px;
   outline: none;
   border: 2px solid transparent;
-  color: ${({ theme }): string => theme.colors.primary};
+  color: var(--primary);
   padding-bottom: 4px;
   cursor: pointer;
   background: rgba(112, 76, 182, 10%) none;
   border-radius: 2px;
   transition: all 0.15s;
+}
 
-  &:hover,
-  &:focus {
-    border: 2px solid ${({ theme }): string => theme.colors.primary};
-  }
-`
-
-export default Button
+.button:hover,
+.button:focus {
+  border: 2px solid var(--primary);
+}

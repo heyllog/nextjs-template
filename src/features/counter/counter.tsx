@@ -1,64 +1,9 @@
 import { FC, useState } from 'react'
 
-import styled from '@emotion/styled'
-
-import Button from 'app/components/button'
+import Button from 'app/components/button/button'
 import { useAppDispatch, useAppSelector } from 'app/store'
 
 import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counter-slice'
-
-const Row = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  & > button {
-    margin-left: 4px;
-    margin-right: 8px;
-  }
-
-  &:not(:last-child) {
-    margin-bottom: 16px;
-  }
-`
-
-const Value = styled.span`
-  font-size: 78px;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-top: 2px;
-`
-
-const TextBox = styled.input`
-  font-size: 32px;
-  padding: 2px;
-  width: 64px;
-  text-align: center;
-  margin-right: 4px;
-`
-
-const AsyncButton = styled(Button)`
-  position: relative;
-
-  &::after {
-    content: '';
-    background-color: rgb(112 76 182 / 15%);
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0;
-    opacity: 0;
-    transition: width 1s linear, opacity 0.5s ease 1s;
-  }
-
-  &:active::after {
-    width: 0;
-    opacity: 100%;
-    transition: 0s;
-  }
-`
 
 const Counter: FC = () => {
   const [incrementAmount, setIncrementAmount] = useState('2')
@@ -69,8 +14,17 @@ const Counter: FC = () => {
   const incrementValue = Number(incrementAmount) || 0
 
   return (
-    <>
-      <Row>
+    <div
+      style={{
+        height: '100vh',
+        padding: 16,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <div>
         <Button
           aria-label='Decrement value'
           onClick={(): void => {
@@ -79,7 +33,17 @@ const Counter: FC = () => {
         >
           -
         </Button>
-        <Value>{count}</Value>
+        <span
+          style={{
+            fontSize: '78px',
+            paddingLeft: '16px',
+            paddingRight: '16px',
+            marginTop: '2px',
+            color: 'white',
+          }}
+        >
+          {count}
+        </span>
         <Button
           aria-label='Increment value'
           onClick={(): void => {
@@ -88,9 +52,17 @@ const Counter: FC = () => {
         >
           +
         </Button>
-      </Row>
-      <Row>
-        <TextBox
+      </div>
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
+        <input
           aria-label='Set increment amount'
           value={incrementAmount}
           onChange={(e): void => setIncrementAmount(e.target.value)}
@@ -102,13 +74,13 @@ const Counter: FC = () => {
         >
           Add Amount
         </Button>
-        <AsyncButton
+        <Button
           onClick={(): void => {
             void dispatch(incrementAsync(incrementValue))
           }}
         >
           Add Async
-        </AsyncButton>
+        </Button>
         <Button
           onClick={(): void => {
             dispatch(incrementIfOdd(incrementValue))
@@ -116,8 +88,8 @@ const Counter: FC = () => {
         >
           Add If Odd
         </Button>
-      </Row>
-    </>
+      </div>
+    </div>
   )
 }
 

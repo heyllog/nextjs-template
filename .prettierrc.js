@@ -1,1 +1,1 @@
-module.exports = require('@eclab/eslint-config/prettier')
+module.exports = require('@heyllog/eslint-config/prettier')

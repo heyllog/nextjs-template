@@ -12,7 +12,7 @@ module.exports = {
     'airbnb',
     'airbnb-typescript',
     'airbnb/hooks',
-    '@eclab/eslint-config/react',
+    '@heyllog/eslint-config/react',
     'prettier',
   ],
   rules: {
