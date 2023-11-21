@@ -1,7 +1,7 @@
 import { FC, useState } from 'react'
 
-import Button from 'app/components/button/button'
-import { useAppDispatch, useAppSelector } from 'app/store'
+import Button from 'core/components/button/button'
+import { useAppDispatch, useAppSelector } from 'core/store'
 
 import { decrement, increment, incrementByAmount, incrementAsync, incrementIfOdd, selectCount } from './counter-slice'
 

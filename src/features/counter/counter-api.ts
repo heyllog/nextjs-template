@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-import EnvironmentConfig from 'app/environment-config'
+import EnvironmentConfig from 'core/environment-config'
 
 const axiosInstance = axios.create({
   baseURL: EnvironmentConfig.apiUrl,
