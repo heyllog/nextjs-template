@@ -3,7 +3,6 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   env: {
     browser: true,
-    jasmine: true,
     jest: true,
     node: true,
   },
@@ -17,8 +16,14 @@ module.exports = {
   ],
   rules: {
     'prettier/prettier': 'error',
+
     // redux-toolkit uses immer and params reassign quite often
-    'no-param-reassign': ['warn', { 'props': false }]
+    'no-param-reassign': ['warn', { 'props': false }],
+    'no-duplicate-imports': 'off',
+
+    // useEffect return function
+    'consistent-return': 'off',
+    'arrow-body-style': 'off',
   },
-  ignorePatterns: ['.eslintrc.js', '*.config.js'],
+  ignorePatterns: ['*.js', '*.config', 'dist'],
 }
